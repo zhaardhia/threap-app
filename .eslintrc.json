@@ -28,6 +28,10 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-props-no-spreading": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/function-component-definition": "off",
+        "react/button-has-type": "off",
+        "react/self-closing-comp": "off",
+        "react/jsx-closing-bracket-location": "off"
     }
 }

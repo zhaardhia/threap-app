@@ -7,7 +7,7 @@ const Sidebar = () => {
     <>
       {showSidebar ? (
         <button
-          className="flex text-4xl text-white items-center cursor-pointer fixed right-10 top-6 z-50"
+          className="flex text-4xl text-[#565254] items-center cursor-pointer fixed right-10 top-6 z-50"
           onClick={() => setShowSidebar(!showSidebar)}
         >
           x
@@ -21,20 +21,29 @@ const Sidebar = () => {
           width="40"
           height="40"
         >
-          <rect width="100" height="10"></rect>
-          <rect y="30" width="100" height="10"></rect>
-          <rect y="60" width="100" height="10"></rect>
+          <rect width="70" height="8"></rect>
+          <rect y="20" width="70" height="8"></rect>
+          <rect y="40" width="70" height="8"></rect>
         </svg>
       )}
 
       <div
-        className={`top-0 right-0 w-[35vw] bg-blue-600  p-10 pl-20 text-white fixed h-full z-40  ease-in-out duration-300 ${
+        className={`top-0 right-0 w-[15vw] bg-white border-2 text-xl  p-10 pl-10 text-[#565254] fixed h-full z-40  ease-in-out duration-300 ${
           showSidebar ? 'translate-x-0 ' : 'translate-x-full'
         }`}
       >
-        <h3 className="mt-20 text-4xl font-semibold text-white">
-          I am a sidebar
+        <h3 className="mt-20 font-semibold text-[#565254]">
+          Login
         </h3>
+        <p className="my-10 font-semibold text-[#565254]">All Threads</p>
+        <p className="font-semibold text-[#565254]">Leaderboards</p>
+        <hr className="my-7" />
+        <p>Category:</p>
+        <div className="flex flex-col gap-2 font-thin text-md my-5">
+          <p>#kacang</p>
+          <p>#helm</p>
+          <p>#sukro</p>
+        </div>
       </div>
     </>
   );

@@ -1,11 +1,25 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
+  safelist: [
+    {
+      pattern: /grid-cols-./,
+      variants: ['md', 'sm'],
+    },
+  ],
   theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#7D7987',
+      },
+      fontFamily: {
+        navbar: ['Poppins', 'sans-serif'],
+        body: ['Mulish', 'sans-serif'],
+        portofolio: ['Montserrat', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
-}
+};

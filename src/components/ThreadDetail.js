@@ -1,29 +1,31 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable max-len */
 import React from 'react';
 import { postedAt } from '../data/index';
 
-const Thread = ({
-  id, title, body, category, createdAt, user,
+const ThreadDetail = ({
+  id, title, body, category, createdAt, owner, comments,
 }) => {
-  const log = 'wkwk';
+  const x = 0;
   return (
-    <a href={`/threads/${id}`} className="my-10 w-[40%] mx-auto border-2 rounded-2xl p-5 flex flex-col gap-4 text-[#565254] bg-white">
+    <div className="my-10 w-[50%] mx-auto border-2 rounded-b-3xl p-5 flex flex-col gap-4 text-[#565254] bg-white">
       <h1 className="text-xl font-bold">{title}</h1>
       <p className="text-sm">{body}</p>
       <div className="flex gap-2">
-        <p>{`#${category}`}</p>
+        <p>
+          #
+          {category}
+        </p>
       </div>
       <div className="flex gap-5">
         <p>{postedAt(createdAt)}</p>
         <p className="">
           Dibuat oleh
           {' '}
-          <strong>{user.name}</strong>
+          <strong>{owner.name}</strong>
         </p>
       </div>
-    </a>
+    </div>
   );
 };
 
-export default Thread;
+export default ThreadDetail;

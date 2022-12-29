@@ -1,3 +1,5 @@
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable max-len */
 import { ActionType } from './action';
 
 function forumDetailReducer(forumDetail = null, action = {}) {
@@ -5,7 +7,7 @@ function forumDetailReducer(forumDetail = null, action = {}) {
     case ActionType.RECEIVE_FORUM_DETAIL:
       return action.payload.forumDetail;
     case ActionType.COMMENT_FORUM:
-      return action.payload.commentForum;
+      return { ...forumDetail, comments: [action.payload.commentForum, ...forumDetail?.comments] };
     default:
       return forumDetail;
   }

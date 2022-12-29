@@ -10,6 +10,9 @@ function asyncPopulateUsersAndForums() {
       const users = await api.getAllUsers();
       const forums = await api.getAllThreads();
 
+      // if (filter !== null) {
+      //   forums.filter((forum) => forum.category.toLowerCase() === filter.toLowerCase);
+      // }
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveForumsActionCreator(forums));
     } catch (error) {

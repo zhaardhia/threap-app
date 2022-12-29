@@ -5,6 +5,8 @@ import isPreloadReducer from './isPreload/reducer';
 import forumDetailReducer from './forumDetail/reducer';
 import forumsReducer from './forums/reducer';
 import usersReducer from './users/reducer';
+import modalThreadReducer from './modalThread/reducer';
+import filterCategoryReducer from './filterCategory/reducer';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     forums: forumsReducer,
     forumDetail: forumDetailReducer,
     loadingBar: loadingBarReducer,
+    modal: modalThreadReducer,
+    filterCategory: filterCategoryReducer,
   },
 });
 

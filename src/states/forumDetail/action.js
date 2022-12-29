@@ -45,10 +45,12 @@ function asyncReceiveForumDetail(threadId) {
 }
 
 function asyncAddCommentForum({ threadId, content }) {
+  console.log(threadId, content);
   return async (dispatch) => {
     dispatch(showLoading());
     try {
       const comment = await api.createComment({ threadId, content });
+      console.log({ comment });
       dispatch(addCommentForumActionCreator(comment));
     } catch (error) {
       alert(error.message);

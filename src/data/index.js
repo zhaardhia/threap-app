@@ -19,4 +19,9 @@ function postedAt(date) {
   return 'just now';
 }
 
-export { postedAt };
+function getUniqueCategory(obj) {
+  const uniqueObjects = [...new Map(obj.map((item) => [item.category, item])).values()];
+  return uniqueObjects;
+}
+
+export { postedAt, getUniqueCategory };

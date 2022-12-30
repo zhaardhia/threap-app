@@ -41,7 +41,6 @@ const HomePage = () => {
     user: users.find((user) => user.id === forum.ownerId),
     authUser: authUser.id,
   }));
-
   const forumFiltered = forumList.filter((forum) => forum.category === filterCategory);
 
   return (

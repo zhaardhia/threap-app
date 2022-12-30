@@ -9,27 +9,20 @@ import { getUniqueCategory } from '../data/index';
 
 const Sidebar = ({ authUser, logOut, xyz }) => {
   const [showSidebar, setShowSidebar] = useState(false);
-  // const { id, name, email } = authUser;
   const filterCategoryVal = useSelector((states) => states.filterCategory);
   const forums = useSelector((states) => states.forums);
   const categoryFiltered = getUniqueCategory(forums);
 
-  const dispatch = useDispatch(); // @TODO: get dispatch function from store
-
-  // const logOut = () => {
-  //   // @TODO: dispatch async action to sign out
-  //   dispatch(asyncUnsetAuthUser());
-  // };
+  const dispatch = useDispatch(); // get dispatch function from store
 
   function filterCategory(category) {
-    if (filterCategoryVal) {
+    if (filterCategoryVal && filterCategoryVal == category) {
       dispatch(filterCategoryForum({ category: null }));
     } else {
       dispatch(filterCategoryForum({ category }));
     }
   }
 
-  // console.log(id);
   return (
     <>
       {showSidebar ? (

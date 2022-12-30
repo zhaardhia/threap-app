@@ -18,12 +18,10 @@ const DetailPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // @TODO: dispatch async action to get talk detail by id
     dispatch(asyncReceiveForumDetail(id));
   }, [id, dispatch]);
-  console.log(forumDetail);
+
   const onComment = (content) => {
-    console.log(id, content);
     dispatch(asyncAddCommentForum({ threadId: id, content }));
   };
 

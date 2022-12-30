@@ -24,15 +24,6 @@ function addCommentForumActionCreator(commentForum) {
   };
 }
 
-// function toggleLikeTalkDetailActionCreator(userId) {
-//   return {
-//     type: ActionType.TOGGLE_LIKE_TALK_DETAIL,
-//     payload: {
-//       userId,
-//     },
-//   };
-// }
-
 function asyncReceiveForumDetail(threadId) {
   return async (dispatch) => {
     try {
@@ -45,12 +36,10 @@ function asyncReceiveForumDetail(threadId) {
 }
 
 function asyncAddCommentForum({ threadId, content }) {
-  console.log(threadId, content);
   return async (dispatch) => {
     dispatch(showLoading());
     try {
       const comment = await api.createComment({ threadId, content });
-      console.log({ comment });
       dispatch(addCommentForumActionCreator(comment));
     } catch (error) {
       alert(error.message);
@@ -58,20 +47,6 @@ function asyncAddCommentForum({ threadId, content }) {
     dispatch(hideLoading());
   };
 }
-
-// function asyncToogleLikeTalkDetail() {
-//   return async (dispatch, getState) => {
-//     const { authUser, talkDetail } = getState();
-//     dispatch(toggleLikeTalkDetailActionCreator(authUser.id));
-//     dispatch(showLoading());
-//     try {
-//       await api.toggleLikeTalk(talkDetail.id);
-//     } catch (error) {
-//       alert(error.message);
-//     }
-//     dispatch(hideLoading());
-//   };
-// }
 
 export {
   ActionType,

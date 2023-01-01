@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginInput from '../components/LoginInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
@@ -24,7 +23,7 @@ const Login = () => {
           className="p-4 py-6 text-white bg-[#F2AA7E] md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly"
         >
           <div className="my-3 text-4xl font-bold tracking-wider text-center">
-            <a href="#">THREAP</a>
+            <h1>THREAP</h1>
           </div>
           <p className="mt-6 font-normal text-center text-slate-50 md:mt-0">
             Find like-minded individuals and engage in meaningful discussions on our online thread app.

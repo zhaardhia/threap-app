@@ -5,13 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleModalThreadActionCreator } from '../states/modalThread/action';
 import { asyncPopulateUsersAndForums } from '../states/shared/action';
 import { asyncAddForum } from '../states/forums/action';
-import Navbar from '../components/Navbar';
-import Thread from '../components/Thread';
-import Sidebar from '../components/Sidebar';
+import Layout from '../components/Layout';
 import ThreadList from '../components/ThreadList';
 import BtnAddThread from '../components/BtnAddThread';
 import ModalAddThread from '../components/ModalAddThread';
-import Tabs from '../components/Tabs';
 
 const HomePage = () => {
   const modalThread = useSelector((states) => states.modal);
@@ -29,7 +26,6 @@ const HomePage = () => {
   }, [dispatch]);
 
   const onAddThread = (title, body, category) => {
-    // @TODO: dispatch async action to add talk
     dispatch(asyncAddForum({ title, body, category }));
   };
 
@@ -43,14 +39,13 @@ const HomePage = () => {
     authUser: authUser.id,
   }));
   const forumFiltered = forumList.filter((forum) => forum.category === filterCategory);
-  console.log(authUser);
+
   return (
-    <div>
-      <Navbar />
+    <Layout>
       <ModalAddThread open={modalThread} toggleModal={toggleModal} addThread={onAddThread} {...authUser} />
       <BtnAddThread toggleModal={toggleModal} />
       <ThreadList threads={filterCategory ? forumFiltered : forumList} />
-    </div>
+    </Layout>
   );
 };
 

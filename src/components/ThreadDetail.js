@@ -1,17 +1,17 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/require-default-props */
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Icon } from '@iconify/react';
 import { postedAt } from '../data/index';
 import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralizeVoteThread } from '../states/forums/action';
 
 const ThreadDetail = ({
-  authUser, id, title, body, category, createdAt, owner, comments, upVotesBy, downVotesBy,
+  authUser, id, title, body, category, createdAt, owner, upVotesBy, downVotesBy,
 }) => {
   const dispatch = useDispatch();
 
   const onUpVote = (threadId, isToNeutral) => {
-    console.log(isToNeutral);
     if (isToNeutral) dispatch(asyncNeutralizeVoteThread({ threadId }));
     else dispatch(asyncUpVoteThread({ threadId }));
   };
@@ -20,10 +20,10 @@ const ThreadDetail = ({
     if (isToNeutral) dispatch(asyncNeutralizeVoteThread({ threadId }));
     else dispatch(asyncDownVoteThread({ threadId }));
   };
-  // console.log(id);
+
   const upVote = upVotesBy?.find((vote) => authUser === vote);
   const downVote = downVotesBy?.find((vote) => authUser === vote);
-  // console.log(comments?.upVotesBy, downVote);
+
   return (
     <div className="my-10 xl:w-[60rem] md:w-[80%] mx-auto p-5 flex justify-between text-[#565254] mt-28">
 
@@ -38,7 +38,7 @@ const ThreadDetail = ({
           <p>{postedAt(createdAt)}</p>
           <div className="flex items-center">
             <div className="w-5">
-              <img src={owner?.avatar} className="rounded-full w-full" />
+              <img src={owner?.avatar} className="rounded-full w-full" alt="owner avatar" />
             </div>
             <p className="ml-1 sm:text-md text-sm">{owner.name}</p>
           </div>
@@ -67,12 +67,6 @@ const ThreadDetail = ({
                 </div>
               )
           }
-          {/* <button
-            className={`${upVote ? 'bg-red-200' : 'bg-white'} w-10`}
-            onClick={() => (upVote ? onUpVote(id, true) : onUpVote(id, false))}
-            >
-            Up
-          </button> */}
           {
             downVote
               ? (
@@ -98,16 +92,26 @@ const ThreadDetail = ({
                 </div>
               )
           }
-          {/* <button
-            className={`${downVote ? 'bg-red-200' : 'bg-white'} w-10`}
-            onClick={() => (downVote ? onDownVote(id, true) : onDownVote(id, false))}
-            >
-            Down
-          </button> */}
         </div>
       </div>
     </div>
   );
+};
+
+ThreadDetail.propTypes = {
+  authUser: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  owner: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string.isRequired),
+  downVotesBy: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 
 export default ThreadDetail;

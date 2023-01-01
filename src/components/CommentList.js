@@ -1,5 +1,6 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable max-len */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -8,11 +9,10 @@ import { asyncUpVoteComment, asyncNeutralizeVoteComment, asyncDownVoteComment } 
 
 const CommentList = ({ id, comments, authUser }) => {
   const dispatch = useDispatch();
-  console.log({ comments });
+
   const onUpVote = (threadId, commentId, isToNeutral) => {
     if (isToNeutral) dispatch(asyncNeutralizeVoteComment({ threadId, commentId }));
     else dispatch(asyncUpVoteComment({ threadId, commentId }));
-    // dispatch(asyncUpVoteComment({ threadId, commentId }));
   };
 
   const onDownVote = (threadId, commentId, isToNeutral) => {
@@ -21,7 +21,7 @@ const CommentList = ({ id, comments, authUser }) => {
   };
 
   return (
-    <div className="my-28 flex flex-col gap-2">
+    <div className="mb-36 flex flex-col gap-2">
       {
         comments.map((comment) => {
           const upVote = comment.upVotesBy.find((vote) => authUser === vote);
@@ -37,8 +37,9 @@ const CommentList = ({ id, comments, authUser }) => {
 };
 
 CommentList.propTypes = {
-  // authUser: PropTypes.shape(authUserShape).isRequired,
-  // comments: PropTypes.func.isRequired,
+  authUser: PropTypes.string.isRequired,
+  comments: PropTypes.array,
+  id: PropTypes.string.isRequired,
 };
 
 export default CommentList;

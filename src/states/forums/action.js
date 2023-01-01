@@ -78,7 +78,6 @@ function asyncUpVoteThread({ threadId }) {
       const vote = await api.upVoteThread(threadId);
       dispatch(upVoteThread(vote));
     } catch (error) {
-      console.error(error);
       alert(error.message);
     }
     dispatch(hideLoading());
@@ -92,7 +91,6 @@ function asyncDownVoteThread({ threadId }) {
       const vote = await api.downVoteThread(threadId);
       dispatch(downVoteThread(vote));
     } catch (error) {
-      console.error(error);
       alert(error.message);
     }
     dispatch(hideLoading());
@@ -106,7 +104,6 @@ function asyncNeutralizeVoteThread({ threadId }) {
       const vote = await api.neutralizeVoteThread(threadId);
       dispatch(neutralizeVoteThread(vote));
     } catch (error) {
-      console.error(error);
       alert(error.message);
     }
     dispatch(hideLoading());
@@ -121,5 +118,4 @@ export {
   asyncDownVoteThread,
   asyncNeutralizeVoteThread,
   asyncAddForum,
-  // asyncToogleLikeTalk,
 };

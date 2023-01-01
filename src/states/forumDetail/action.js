@@ -81,7 +81,6 @@ function asyncAddCommentForum({ threadId, content }) {
 function asyncUpVoteComment({ threadId, commentId }) {
   return async (dispatch) => {
     dispatch(showLoading());
-    console.log('run');
     try {
       const vote = await api.upVoteComment(threadId, commentId);
       dispatch(upVoteComment(vote));

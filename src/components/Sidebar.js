@@ -1,36 +1,39 @@
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable max-len */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { asyncUnsetAuthUser } from '../states/authUser/action';
 import { filterCategoryForum } from '../states/filterCategory/action';
+import { asyncUnsetAuthUser } from '../states/authUser/action';
 import { getUniqueCategory } from '../data/index';
 
-const Sidebar = ({ authUser, logOut, xyz }) => {
+const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const filterCategoryVal = useSelector((states) => states.filterCategory);
   const forums = useSelector((states) => states.forums);
   const categoryFiltered = getUniqueCategory(forums);
-
   const dispatch = useDispatch(); // get dispatch function from store
 
-  function filterCategory(category) {
-    if (filterCategoryVal && filterCategoryVal == category) {
+  const filterCategory = (category) => {
+    if (filterCategoryVal && filterCategoryVal === category) {
       dispatch(filterCategoryForum({ category: null }));
     } else {
       dispatch(filterCategoryForum({ category }));
     }
-  }
+  };
+
+  const logOut = () => {
+    dispatch(asyncUnsetAuthUser());
+  };
 
   return (
     <>
       {showSidebar ? (
         <button
-          className="flex text-4xl text-[#565254] items-center cursor-pointer fixed right-10 top-6 z-50"
+          className="flex text-2xl text-[#565254] items-center cursor-pointer fixed right-10 top-6 z-50"
           onClick={() => setShowSidebar(!showSidebar)}
         >
-          x
+          <Icon icon="maki:cross" />
         </button>
       ) : (
         <svg
@@ -48,7 +51,7 @@ const Sidebar = ({ authUser, logOut, xyz }) => {
       )}
 
       <div
-        className={`top-0 right-0 w-[15rem] bg-white border-2 text-xl flex flex-col gap-5 p-10 pl-10 text-[#565254] fixed h-full z-40  ease-in-out duration-300 ${
+        className={`top-0 right-0 w-[15rem] bg-[#FACFAD] text-xl flex flex-col gap-5 p-10 pl-10 text-[#565254] fixed h-full z-40  ease-in-out duration-300 ${
           showSidebar ? 'translate-x-0 ' : 'translate-x-full'
         }`}
       >
@@ -66,29 +69,13 @@ const Sidebar = ({ authUser, logOut, xyz }) => {
         <div className="flex flex-col gap-2 font-thin text-md my-5 text-left">
           {
             categoryFiltered.map((value) => (
-              <button onClick={(() => filterCategory(value.category))}>{value.category}</button>
+              <button key={value.id} onClick={(() => filterCategory(value.category))}>{value.category}</button>
             ))
           }
         </div>
       </div>
     </>
   );
-};
-
-// // <button>#kacang</button>
-// <button>#helm</button>
-// <button onClick={() => filterCategory('react')}>#sukro</button>
-
-// const authUserShape = {
-//   id: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   email: PropTypes.string.isRequired,
-
-// };
-
-Sidebar.propTypes = {
-  // authUser: PropTypes.shape(authUserShape).isRequired,
-  logOut: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

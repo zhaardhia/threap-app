@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Thread from './Thread';
 import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralizeVoteThread } from '../states/forums/action';
@@ -31,11 +31,6 @@ const ThreadList = ({ threads }) => {
       }
     </div>
   );
-};
-
-ThreadList.propTypes = {
-  // authUser: PropTypes.shape(authUserShape).isRequired,
-  threads: PropTypes.arrayOf.isRequired,
 };
 
 export default ThreadList;

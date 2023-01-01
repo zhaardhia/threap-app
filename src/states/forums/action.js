@@ -8,7 +8,6 @@ import api from '../../data/api';
 const ActionType = {
   RECEIVE_FORUMS: 'RECEIVE_FORUMS',
   ADD_FORUM: 'ADD_FORUM',
-  // TODO: VOTE AND UNVOTE
   UP_VOTE: 'UP_VOTE',
   DOWN_VOTE: 'DOWN_VOTE',
   NEUTRAL_VOTE: 'NEUTRAL_VOTE',
@@ -61,53 +60,56 @@ function neutralizeVoteThread(vote) {
 
 function asyncAddForum({ title, body, category = '' }) {
   return async (dispatch) => {
-    // dispatch(showLoading());
+    dispatch(showLoading());
     try {
       const forum = await api.createThread({ title, body, category });
       dispatch(addForumActionCreator(forum));
     } catch (error) {
       alert(error.message);
     }
-    // dispatch(hideLoading());
+    dispatch(hideLoading());
   };
 }
 
 function asyncUpVoteThread({ threadId }) {
   return async (dispatch) => {
-    // dispatch(showLoading());
+    dispatch(showLoading());
     try {
       const vote = await api.upVoteThread(threadId);
       dispatch(upVoteThread(vote));
     } catch (error) {
+      console.error(error);
       alert(error.message);
     }
-    // dispatch(hideLoading());
+    dispatch(hideLoading());
   };
 }
 
 function asyncDownVoteThread({ threadId }) {
   return async (dispatch) => {
-    // dispatch(showLoading());
+    dispatch(showLoading());
     try {
       const vote = await api.downVoteThread(threadId);
       dispatch(downVoteThread(vote));
     } catch (error) {
+      console.error(error);
       alert(error.message);
     }
-    // dispatch(hideLoading());
+    dispatch(hideLoading());
   };
 }
 
 function asyncNeutralizeVoteThread({ threadId }) {
   return async (dispatch) => {
-    // dispatch(showLoading());
+    dispatch(showLoading());
     try {
       const vote = await api.neutralizeVoteThread(threadId);
       dispatch(neutralizeVoteThread(vote));
     } catch (error) {
+      console.error(error);
       alert(error.message);
     }
-    // dispatch(hideLoading());
+    dispatch(hideLoading());
   };
 }
 

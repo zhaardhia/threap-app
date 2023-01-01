@@ -8,7 +8,11 @@
 } */
 
 body {
-  background-color: #FFFBFE;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(25deg, #F2AA7E, #FFFBFE) ;
+  background-repeat: no-repeat; 
 }
 
 /* code {

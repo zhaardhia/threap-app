@@ -9,15 +9,26 @@ function forumsReducer(forums = [], action = {}) {
     case ActionType.ADD_FORUM:
       return [action.payload.forum, ...forums];
     case ActionType.UP_VOTE:
+      // console.log(action.payload);
       return forums.map((forum) => {
+        // console.log(forum.id, action.payload.vote.threadId);
         if (forum.id === action.payload.vote.threadId) {
           const downFilter = forum.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+          console.log(
+            {
+              ...forum,
+              upVotesBy: [action.payload.vote.userId, ...forum?.upVotesBy],
+              downVotesBy: [...downFilter],
+            },
+          );
           return {
             ...forum,
             upVotesBy: [action.payload.vote.userId, ...forum?.upVotesBy],
             downVotesBy: [...downFilter],
           };
         }
+        // console.log('forum not found');
+        // console.log(forums);
         return forum;
       });
     case ActionType.DOWN_VOTE:

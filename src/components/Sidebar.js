@@ -27,7 +27,7 @@ const Sidebar = ({ authUser, logOut, xyz }) => {
     <>
       {showSidebar ? (
         <button
-          className="flex text-4xl text-[#565254] items-center cursor-pointer fixed left-10 top-6 z-50"
+          className="flex text-4xl text-[#565254] items-center cursor-pointer fixed right-10 top-6 z-50"
           onClick={() => setShowSidebar(!showSidebar)}
         >
           x
@@ -35,8 +35,8 @@ const Sidebar = ({ authUser, logOut, xyz }) => {
       ) : (
         <svg
           onClick={() => setShowSidebar(!showSidebar)}
-          className="fixed  z-30 flex items-center cursor-pointer left-10 top-6"
-          fill="#2563EB"
+          className="z-30 cursor-pointer mt-3"
+          fill="#FFF"
           viewBox="0 0 100 80"
           width="40"
           height="40"
@@ -48,8 +48,8 @@ const Sidebar = ({ authUser, logOut, xyz }) => {
       )}
 
       <div
-        className={`top-0 left-0 w-[15rem] bg-white border-2 text-xl flex flex-col gap-5 p-10 pl-10 text-[#565254] fixed h-full z-40  ease-in-out duration-300 ${
-          showSidebar ? 'translate-x-0 ' : '-translate-x-full'
+        className={`top-0 right-0 w-[15rem] bg-white border-2 text-xl flex flex-col gap-5 p-10 pl-10 text-[#565254] fixed h-full z-40  ease-in-out duration-300 ${
+          showSidebar ? 'translate-x-0 ' : 'translate-x-full'
         }`}
       >
         <button
@@ -59,8 +59,8 @@ const Sidebar = ({ authUser, logOut, xyz }) => {
         >
           Logout
         </button>
-        <a href="/" className="font-semibold text-[#565254]">All Threads</a>
-        <p className="font-semibold text-[#565254]">Leaderboards</p>
+        <Link to="/" className="font-semibold text-[#565254]">All Threads</Link>
+        <Link to="/leaderboards" className="font-semibold text-[#565254]">Leaderboards</Link>
         <hr className="my-7" />
         <p>Category:</p>
         <div className="flex flex-col gap-2 font-thin text-md my-5 text-left">

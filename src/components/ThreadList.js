@@ -19,7 +19,7 @@ const ThreadList = ({ threads }) => {
   };
 
   return (
-    <div className="my-28">
+    <div className="my-36">
       {
         threads.map((thread) => {
           const upVote = thread.upVotesBy.find((vote) => thread.authUser === vote);
@@ -35,7 +35,7 @@ const ThreadList = ({ threads }) => {
 
 ThreadList.propTypes = {
   // authUser: PropTypes.shape(authUserShape).isRequired,
-  threads: PropTypes.func.isRequired,
+  threads: PropTypes.arrayOf.isRequired,
 };
 
 export default ThreadList;

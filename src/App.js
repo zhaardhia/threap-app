@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import HomePage from './pages/HomePage';
-import Sidebar from './components/Sidebar';
+import Leaderboard from './pages/Leaderboard';
 // import RegisterPage from './pages/RegisterPage';
 import DetailPage from './pages/DetailPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
+import { asyncPopulateUsersAndForums } from './states/shared/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
+import { asyncGetLeaderBoardsActionCreator } from './states/leaderboards/action';
 
 function App() {
   const {
@@ -21,7 +23,9 @@ function App() {
 
   useEffect(() => {
     // @TODO: dispatch async action to preload app
+    dispatch(asyncPopulateUsersAndForums());
     dispatch(asyncPreloadProcess());
+    dispatch(asyncGetLeaderBoardsActionCreator());
   }, [dispatch]);
 
   const onLogOut = () => dispatch(asyncUnsetAuthUser());
@@ -48,15 +52,11 @@ function App() {
     <>
       {/* <Loading /> */}
       <div className="font-navbar">
-        <header>
-          <Sidebar authUser={authUser} logOut={onLogOut} xyz />
-
-          {/* <Navigation authUser={authUser} signOut={onSignOut} /> */}
-        </header>
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/threads/:id" element={<DetailPage />} />
+            <Route path="/leaderboards" element={<Leaderboard />} />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} /> */}
           </Routes>

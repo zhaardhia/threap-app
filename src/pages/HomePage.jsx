@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-bind */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +11,7 @@ import Sidebar from '../components/Sidebar';
 import ThreadList from '../components/ThreadList';
 import BtnAddThread from '../components/BtnAddThread';
 import ModalAddThread from '../components/ModalAddThread';
+import Tabs from '../components/Tabs';
 
 const HomePage = () => {
   const modalThread = useSelector((states) => states.modal);
@@ -23,7 +25,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // @TODO: dispatch async action to populate talks and users data
     dispatch(asyncPopulateUsersAndForums());
   }, [dispatch]);
 
@@ -42,11 +43,11 @@ const HomePage = () => {
     authUser: authUser.id,
   }));
   const forumFiltered = forumList.filter((forum) => forum.category === filterCategory);
-
+  console.log(authUser);
   return (
-    <div className="">
+    <div>
       <Navbar />
-      <ModalAddThread open={modalThread} toggleModal={toggleModal} addThread={onAddThread} />
+      <ModalAddThread open={modalThread} toggleModal={toggleModal} addThread={onAddThread} {...authUser} />
       <BtnAddThread toggleModal={toggleModal} />
       <ThreadList threads={filterCategory ? forumFiltered : forumList} />
     </div>

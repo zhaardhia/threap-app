@@ -22,12 +22,12 @@ const Register = () => {
         className="flex flex-col overflow-hidden bg-white rounded-md shadow-lg max md:flex-row md:flex-1 lg:max-w-screen-md"
       >
         <div
-          className="p-4 py-6 text-white bg-[#565254] md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly"
+          className="p-4 py-6 text-white bg-[#F2AA7E] md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly"
         >
           <div className="my-3 text-4xl font-bold tracking-wider text-center">
             <a href="#">THREAP</a>
           </div>
-          <p className="mt-6 font-normal text-center text-gray-300 md:mt-0">
+          <p className="mt-6 font-normal text-center text-slate-50 md:mt-0">
             Connect with others and discuss a wide variety of topics on our online forum platform.
           </p>
           <p className="flex flex-col items-center justify-center mt-10 text-center">

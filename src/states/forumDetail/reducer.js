@@ -8,6 +8,92 @@ function forumDetailReducer(forumDetail = null, action = {}) {
       return action.payload.forumDetail;
     case ActionType.COMMENT_FORUM:
       return { ...forumDetail, comments: [action.payload.commentForum, ...forumDetail?.comments] };
+    case ActionType.UP_VOTE_COMMENT:
+      return {
+        ...forumDetail,
+        comments:
+          forumDetail?.comments?.map((commentVal) => {
+            if (commentVal.id === action.payload.vote.commentId) {
+              const downFilter = commentVal.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+              return {
+                ...commentVal,
+                upVotesBy: [action.payload.vote.userId, ...commentVal.upVotesBy],
+                downVotesBy: [...downFilter],
+              };
+            }
+            return commentVal;
+          }),
+      };
+    case ActionType.DOWN_VOTE_COMMENT:
+      return {
+        ...forumDetail,
+        comments:
+          forumDetail?.comments?.map((commentVal) => {
+            if (commentVal.id === action.payload.vote.commentId) {
+              const upFilter = commentVal.upVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+              return {
+                ...commentVal,
+                downVotesBy: [action.payload.vote.userId, ...commentVal.upVotesBy],
+                upVotesBy: [...upFilter],
+              };
+            }
+            return commentVal;
+          }),
+      };
+    case ActionType.NEUTRAL_VOTE_COMMENT:
+      return {
+        ...forumDetail,
+        comments:
+          forumDetail?.comments?.map((commentVal) => {
+            if (commentVal.id === action.payload.vote.commentId) {
+              const downFilter = commentVal.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+              const upFilter = commentVal.upVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+
+              return {
+                ...commentVal,
+                upVotesBy: [...upFilter],
+                downVotesBy: [...downFilter],
+              };
+            }
+            return commentVal;
+          }),
+      };
+      // forumDetail.map((forum) => {
+      //   if (forum.id === action.payload.vote.threadId) {
+      //     const downFilter = forum.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+      //     return {
+      //       ...forum,
+      //       upVotesBy: [action.payload.vote.userId, ...forum?.upVotesBy],
+      //       downVotesBy: [...downFilter],
+      //     };
+      //   }
+      //   return forum;
+      // });
+    case ActionType.DOWN_VOTE:
+      return forumDetail.map((forum) => {
+        if (forum.id === action.payload.vote.threadId) {
+          const upFilter = forum.upVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+          return {
+            ...forum,
+            upVotesBy: [...upFilter],
+            downVotesBy: [action.payload.vote.userId, ...forum?.downVotesBy],
+          };
+        }
+        return forum;
+      });
+    case ActionType.NEUTRAL_VOTE:
+      return forumDetail.map((forum) => {
+        if (forum.id === action.payload.vote.threadId) {
+          const upFilter = forum.upVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+          const downFilter = forum.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
+          return {
+            ...forum,
+            upVotesBy: [...upFilter],
+            downVotesBy: [...downFilter],
+          };
+        }
+        return forum;
+      });
     default:
       return forumDetail;
   }

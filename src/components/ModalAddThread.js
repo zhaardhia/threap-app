@@ -1,10 +1,10 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import PropTypes from 'prop-types';
-// import {  } from '@heroicons/react';
 
-const ModalAddThread = ({ open, toggleModal, addThread }) => {
-  // const [open, setOpen] = useState(true);
+const ModalAddThread = ({
+  open, toggleModal, addThread, avatar,
+}) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [category, setCategory] = useState('');
@@ -27,9 +27,7 @@ const ModalAddThread = ({ open, toggleModal, addThread }) => {
   }
 
   function handleBodyChange({ target }) {
-    if (target.value.length <= 320) {
-      setBody(target.value);
-    }
+    setBody(target.value);
   }
 
   function handleCategoryChange({ target }) {
@@ -86,19 +84,19 @@ const ModalAddThread = ({ open, toggleModal, addThread }) => {
                 <div className="sm:flex sm:items-start">
                   <div
                     className="mx-auto flex-shrink-0 flex items-center
-                   justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0
+                   justify-center h-12 w-12 rounded-full sm:mx-0
                     sm:h-10 sm:w-10"
                   >
-                    {/* <ExclamationIcon className="h-6 w-6 text-red-600" aria-hidden="true" /> */}
+                    <img src={avatar} className="rounded-full" alt="user avatar" />
                   </div>
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-[100%]">
-                    <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+                    <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900 mt-2">
                       Add a new Thread
                     </Dialog.Title>
-                    <div className="mt-2">
+                    <div className="mt-5">
 
                       <input type="text" className="bg-slate-50 w-[100%] h-[3rem] rounded-lg p-3 text-sm text-gray-500" placeholder="Enter the Title" value={title} onChange={handleTitlChange} />
-                      <textarea className="bg-slate-50 w-[100%] h-[3rem] rounded-lg p-3 text-sm text-gray-500" placeholder="What's on your mind?" value={body} onChange={handleBodyChange}></textarea>
+                      <textarea className="bg-slate-50 w-[100%] my-5 h-[3rem] rounded-lg p-3 text-sm text-gray-500" placeholder="What's on your mind?" value={body} onChange={handleBodyChange}></textarea>
                       <input type="text" className="bg-slate-50 w-[100%] h-[3rem] rounded-lg p-3 text-sm text-gray-500" placeholder="Enter the Category" value={category} onChange={handleCategoryChange} />
                     </div>
                   </div>
@@ -129,6 +127,7 @@ ModalAddThread.propTypes = {
   open: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
   addThread: PropTypes.func.isRequired,
+  avatar: PropTypes.string.isRequired,
 };
 
 export default ModalAddThread;

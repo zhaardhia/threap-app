@@ -7,6 +7,7 @@ import forumsReducer from './forums/reducer';
 import usersReducer from './users/reducer';
 import modalThreadReducer from './modalThread/reducer';
 import filterCategoryReducer from './filterCategory/reducer';
+import getLeaderboardsReducer from './leaderboards/reducer';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     loadingBar: loadingBarReducer,
     modal: modalThreadReducer,
     filterCategory: filterCategoryReducer,
+    leaderboards: getLeaderboardsReducer,
   },
 });
 

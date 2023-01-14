@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer component renders successfully 1`] = `
+exports[`Footer component should render Footer component successfully 1`] = `
 <div>
   <footer>
     <p
       class="text-center my-10"
     >
-      2020 -
+      2022
+       
+      -
        
       <a
         class="underline"

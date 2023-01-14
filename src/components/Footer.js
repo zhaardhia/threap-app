@@ -1,13 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Footer = () => (
+const Footer = ({ year, link, developer }) => (
   <footer>
     <p className="text-center my-10">
-      2020 -
+      {year}
       {' '}
-      <a href="https://github.com/zhaardhia" className="underline">zhaardhia</a>
+      -
+      {' '}
+      <a href={link} className="underline">{developer}</a>
     </p>
   </footer>
 );
+
+Footer.propTypes = {
+  year: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  developer: PropTypes.string.isRequired,
+};
 
 export default Footer;

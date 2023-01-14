@@ -5,9 +5,9 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <div>
-    <Navbar />
+    <Navbar app="Threap" />
     {children}
-    <Footer />
+    <Footer year="2022" link="https://github.com/zhaardhia" developer="zhaardhia" />
   </div>
 );
 

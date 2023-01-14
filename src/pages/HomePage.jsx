@@ -1,14 +1,16 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-bind */
 import React, { useEffect } from 'react';
+import loadable from '@loadable/component';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleModalThreadActionCreator } from '../states/modalThread/action';
 import { asyncPopulateUsersAndForums } from '../states/shared/action';
 import { asyncAddForum } from '../states/forums/action';
 import Layout from '../components/Layout';
-import ThreadList from '../components/ThreadList';
 import BtnAddThread from '../components/BtnAddThread';
-import ModalAddThread from '../components/ModalAddThread';
+
+const ModalAddThread = loadable(() => import('../components/ModalAddThread'));
+const ThreadList = loadable(() => import('../components/ThreadList'));
 
 const HomePage = () => {
   const modalThread = useSelector((states) => states.modal);

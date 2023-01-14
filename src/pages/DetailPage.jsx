@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
+import loadable from '@loadable/component';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ThreadDetail from '../components/ThreadDetail';
-import CommentList from '../components/CommentList';
 import AddComment from '../components/AddComment';
 import Layout from '../components/Layout';
 import { asyncReceiveForumDetail, asyncAddCommentForum } from '../states/forumDetail/action';
+
+const CommentList = loadable(() => import('../components/CommentList'));
+const ThreadDetail = loadable(() => import('../components/ThreadDetail'));
 
 const DetailPage = () => {
   const { id } = useParams();

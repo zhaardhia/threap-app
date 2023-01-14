@@ -94,42 +94,6 @@ function forumDetailReducer(forumDetail = null, action = {}) {
             return commentVal;
           }),
       };
-      // forumDetail.map((forum) => {
-      //   if (forum.id === action.payload.vote.threadId) {
-      //     const downFilter = forum.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
-      //     return {
-      //       ...forum,
-      //       upVotesBy: [action.payload.vote.userId, ...forum?.upVotesBy],
-      //       downVotesBy: [...downFilter],
-      //     };
-      //   }
-      //   return forum;
-      // });
-    case ActionType.DOWN_VOTE:
-      return forumDetail.map((forum) => {
-        if (forum.id === action.payload.vote.threadId) {
-          const upFilter = forum.upVotesBy.filter((vote) => vote !== action.payload.vote.userId);
-          return {
-            ...forum,
-            upVotesBy: [...upFilter],
-            downVotesBy: [action.payload.vote.userId, ...forum?.downVotesBy],
-          };
-        }
-        return forum;
-      });
-    case ActionType.NEUTRAL_VOTE:
-      return forumDetail.map((forum) => {
-        if (forum.id === action.payload.vote.threadId) {
-          const upFilter = forum.upVotesBy.filter((vote) => vote !== action.payload.vote.userId);
-          const downFilter = forum.downVotesBy.filter((vote) => vote !== action.payload.vote.userId);
-          return {
-            ...forum,
-            upVotesBy: [...upFilter],
-            downVotesBy: [...downFilter],
-          };
-        }
-        return forum;
-      });
     default:
       return forumDetail;
   }

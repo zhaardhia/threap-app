@@ -65,8 +65,6 @@ describe('asyncPopulateUsersAndForums thunk', () => {
     // backup original implementation
     api._getAllUsers = api.getAllUsers;
     api._getAllThreads = api.getAllThreads;
-    // console.log(api._getAllThreads);
-    // console.log(api.getAllThreads);
   });
 
   afterEach(() => {
@@ -86,7 +84,7 @@ describe('asyncPopulateUsersAndForums thunk', () => {
     api.getAllThreads = () => Promise.resolve(fakeForumsResponse);
     // mock dispatch
     const dispatch = jest.fn();
-    // console.log(api.getAllForums);
+
     // action
     await asyncPopulateUsersAndForums()(dispatch);
 

@@ -5,8 +5,8 @@
  * - forumsReducer function
  *  - should return the initial state when given by unknown action
  *  - should return the threads when given by RECEIVE_FORUMS action
- *  - should return the talks with the new talk when given by ADD_TALK action
- *  - should return the talks with the toggled like talk when given by TOGGLE_LIKE_TALK action
+ *  - should return the threads with the new thread when given by ADD_FORUM action
+ *  - should return the threads with the thread liked by the user when given by UP_VOTE action
  *
  */
 
@@ -104,7 +104,7 @@ describe('forumsReducer function', () => {
     expect(nextState).toEqual([action.payload.forum, ...initialState]);
   });
 
-  it('should return the threads with the thread l when given by UP_VOTE action', () => {
+  it('should return the threads with the thread liked by the user when given by UP_VOTE action', () => {
     // arrange
     const initialState = [
       {

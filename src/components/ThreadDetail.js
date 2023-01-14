@@ -48,7 +48,7 @@ const ThreadDetail = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className=""
+                    className="cursor-pointer"
                     icon="mdi:like"
                     onClick={() => (onUpVote(id, true))}
                   />
@@ -59,7 +59,7 @@ const ThreadDetail = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className="w-5"
+                    className="w-5 cursor-pointer"
                     icon="mdi:like-outline"
                     onClick={() => (onUpVote(id, false))}
                   />
@@ -73,7 +73,7 @@ const ThreadDetail = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className=""
+                    className="cursor-pointer"
                     icon="mdi:dislike"
                     onClick={() => (onDownVote(id, true))}
                   />
@@ -84,7 +84,7 @@ const ThreadDetail = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className="w-5"
+                    className="w-5 cursor-pointer"
                     icon="mdi:dislike-outline"
                     onClick={() => (onDownVote(id, false))}
                   />

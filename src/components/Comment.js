@@ -23,7 +23,7 @@ const Comment = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className=""
+                    className="cursor-pointer"
                     icon="mdi:dislike"
                     onClick={() => (upVote(threadId, id, true))}
                   />
@@ -34,7 +34,7 @@ const Comment = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className="w-5"
+                    className="w-5 cursor-pointer"
                     icon="mdi:dislike-outline"
                     onClick={() => (upVote(threadId, id, false))}
                   />
@@ -48,7 +48,7 @@ const Comment = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className=""
+                    className="cursor-pointer"
                     icon="mdi:dislike"
                     onClick={() => (downVote(threadId, id, true))}
                   />
@@ -59,7 +59,7 @@ const Comment = ({
                 <div className="flex">
                   <Icon
                     width={20}
-                    className="w-5"
+                    className="w-5 cursor-pointer"
                     icon="mdi:dislike-outline"
                     onClick={() => (downVote(threadId, id, false))}
                   />

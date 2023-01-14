@@ -4,7 +4,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react';
 import { Tab } from '@headlessui/react';
 
 function classNames(...classes) {
@@ -12,10 +11,10 @@ function classNames(...classes) {
 }
 
 export default function Tabs({ boardsAsc, boardsDesc }) {
-  const [order] = useState({
+  const order = {
     'Best Score': [...boardsAsc],
     'Least Score': [...boardsDesc],
-  });
+  };
 
   return (
     <div className="px-2 py-16 sm:px-0 mx-auto -z-1">

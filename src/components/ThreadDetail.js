@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Icon } from '@iconify/react';
 import { postedAt } from '../data/index';
-import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralizeVoteThread } from '../states/forums/action';
+import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralizeVoteThread } from '../states/forumDetail/action';
 
 const ThreadDetail = ({
   authUser, id, title, body, category, createdAt, owner, upVotesBy, downVotesBy,
@@ -13,7 +13,7 @@ const ThreadDetail = ({
 
   const onUpVote = (threadId, isToNeutral) => {
     if (isToNeutral) dispatch(asyncNeutralizeVoteThread({ threadId }));
-    else dispatch(asyncUpVoteThread({ threadId }));
+    else dispatch(asyncUpVoteThread({ threadId, authUser }));
   };
 
   const onDownVote = (threadId, isToNeutral) => {

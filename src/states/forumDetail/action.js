@@ -3,6 +3,9 @@ import api from '../../data/api';
 
 const ActionType = {
   RECEIVE_FORUM_DETAIL: 'RECEIVE_FORUM_DETAIL',
+  UP_VOTE: 'UP_VOTE',
+  DOWN_VOTE: 'DOWN_VOTE',
+  NEUTRAL_VOTE: 'NEUTRAL_VOTE',
   COMMENT_FORUM: 'COMMENT_FORUM',
   UP_VOTE_COMMENT: 'UP_VOTE',
   DOWN_VOTE_COMMENT: 'DOWN_VOTE',
@@ -23,6 +26,33 @@ function addCommentForumActionCreator(commentForum) {
     type: ActionType.COMMENT_FORUM,
     payload: {
       commentForum,
+    },
+  };
+}
+
+function upVoteThread(vote) {
+  return {
+    type: ActionType.UP_VOTE,
+    payload: {
+      vote,
+    },
+  };
+}
+
+function downVoteThread(vote) {
+  return {
+    type: ActionType.DOWN_VOTE,
+    payload: {
+      vote,
+    },
+  };
+}
+
+function neutralizeVoteThread(vote) {
+  return {
+    type: ActionType.NEUTRAL_VOTE,
+    payload: {
+      vote,
     },
   };
 }
@@ -62,6 +92,45 @@ function asyncReceiveForumDetail(threadId) {
     } catch (error) {
       alert(error.message);
     }
+  };
+}
+
+function asyncUpVoteThread({ threadId }) {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    try {
+      const vote = await api.upVoteThread(threadId);
+      dispatch(upVoteThread(vote));
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+function asyncDownVoteThread({ threadId }) {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    try {
+      const vote = await api.downVoteThread(threadId);
+      dispatch(downVoteThread(vote));
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+function asyncNeutralizeVoteThread({ threadId }) {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    try {
+      const vote = await api.neutralizeVoteThread(threadId);
+      dispatch(neutralizeVoteThread(vote));
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
   };
 }
 
@@ -120,6 +189,9 @@ function asyncNeutralizeVoteComment({ threadId, commentId }) {
 export {
   ActionType,
   receiveForumDetailActionCreator,
+  asyncUpVoteThread,
+  asyncDownVoteThread,
+  asyncNeutralizeVoteThread,
   addCommentForumActionCreator,
   asyncReceiveForumDetail,
   asyncAddCommentForum,

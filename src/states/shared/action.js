@@ -9,7 +9,6 @@ function asyncPopulateUsersAndForums() {
     try {
       const users = await api.getAllUsers();
       const forums = await api.getAllThreads();
-
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveForumsActionCreator(forums));
     } catch (error) {

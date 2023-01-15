@@ -60,9 +60,7 @@ describe('asyncGetLeaderBoardsActionCreator thunk', () => {
     // stub implementation
     api.seeLeaderboards = () => Promise.resolve(fakeLeaderboardResponse);
     // mock dispatch
-    // const dispatch = jest.fn();
-    const dispatch = null;
-    // console.log(api.getAllForums);
+    const dispatch = jest.fn();
     // action
     await asyncGetLeaderBoardsActionCreator()(dispatch);
 

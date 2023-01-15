@@ -26,7 +26,7 @@ const Login = () => {
             <h1>THREAP</h1>
           </div>
           <p className="mt-6 font-normal text-center text-slate-50 md:mt-0">
-            Find like-minded individuals and engage in meaningful discussions on our online thread app.
+            Find like-minded individuals and engage in meaningful discussions on our online thread apps.
           </p>
           <p className="flex flex-col items-center justify-center mt-10 text-center">
             <span>Dont have an account?</span>

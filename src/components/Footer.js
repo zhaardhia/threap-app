@@ -8,11 +8,7 @@ const Footer = ({ year, link, developer }) => (
       {' '}
       -
       {' '}
-      <a href={link} className="underline">
-        &copy;
-        {' '}
-        {developer}
-      </a>
+      <a href={link} className="underline">{developer}</a>
     </p>
   </footer>
 );

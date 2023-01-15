@@ -8,8 +8,6 @@
 
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../data/api';
-// import { receiveForumsActionCreator } from '../forums/action';
-// import { receiveUsersActionCreator } from '../users/action';
 import { asyncGetLeaderBoardsActionCreator, getLeaderBoardsActionCreator } from './action';
 
 const fakeLeaderboardResponse = [
@@ -62,7 +60,8 @@ describe('asyncGetLeaderBoardsActionCreator thunk', () => {
     // stub implementation
     api.seeLeaderboards = () => Promise.resolve(fakeLeaderboardResponse);
     // mock dispatch
-    const dispatch = jest.fn();
+    // const dispatch = jest.fn();
+    const dispatch = null;
     // console.log(api.getAllForums);
     // action
     await asyncGetLeaderBoardsActionCreator()(dispatch);

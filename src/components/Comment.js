@@ -24,7 +24,7 @@ const Comment = ({
                   <Icon
                     width={20}
                     className="cursor-pointer"
-                    icon="mdi:dislike"
+                    icon="mdi:like"
                     onClick={() => (upVote(threadId, id, true))}
                   />
                   <p>{upVotesBy.length}</p>
@@ -35,7 +35,7 @@ const Comment = ({
                   <Icon
                     width={20}
                     className="w-5 cursor-pointer"
-                    icon="mdi:dislike-outline"
+                    icon="mdi:like-outline"
                     onClick={() => (upVote(threadId, id, false))}
                   />
                   <p>{upVotesBy.length}</p>

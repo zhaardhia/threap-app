@@ -19,6 +19,7 @@ const RegisterInput = ({ register }) => {
           value={email}
           onChange={onEmailChange}
           autoFocus
+          placeholder="Enter your email"
           className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
         />
       </div>
@@ -30,6 +31,7 @@ const RegisterInput = ({ register }) => {
           value={name}
           onChange={onNameChange}
           autoFocus
+          placeholder="Enter your name"
           className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
         />
       </div>
@@ -42,6 +44,7 @@ const RegisterInput = ({ register }) => {
           id="password"
           value={password}
           onChange={onPasswordChange}
+          placeholder="Enter your password"
           className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
         />
       </div>
@@ -51,7 +54,7 @@ const RegisterInput = ({ register }) => {
           className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-slate-200 rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-blue-200 focus:ring-4"
           onClick={() => register({ name, email, password })}
         >
-          Log in
+          Register
         </button>
       </div>
     </form>

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BtnAddThread component should render BtnAddThread component successfully 1`] = `
+<div>
+  <button
+    class=" bg-white fixed right-[16%] bottom-[38px] px-5 py-3 rounded-full shadow-lg"
+  >
+    <p
+      class="text-black text-lg"
+    >
+      +
+    </p>
+  </button>
+</div>
+`;

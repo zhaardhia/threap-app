@@ -83,7 +83,6 @@ const Thread = ({
         }
       </div>
     </div>
-
   </div>
 );
 

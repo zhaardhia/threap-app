@@ -7,18 +7,18 @@ const stories = {
 
 export default stories;
 
-const WithTypeAddThread = () => (
-  <ButtonAdd
-    ctaLabel="Add Thread"
-    type="addThread"
-  />
-);
+const TemplateStory = (args) => <ButtonAdd {...args} />;
 
-const WithTypeAddComment = () => (
-  <ButtonAdd
-    ctaLabel="Add Comment"
-    type="addComment"
-  />
-);
+const WithTypeAddThread = TemplateStory.bind({});
+WithTypeAddThread.args = {
+  ctaLabel: 'Add Thread',
+  type: 'addThread',
+};
+
+const WithTypeAddComment = TemplateStory.bind({});
+WithTypeAddComment.args = {
+  ctaLabel: 'Add Comment',
+  type: 'addComment',
+};
 
 export { WithTypeAddThread, WithTypeAddComment };

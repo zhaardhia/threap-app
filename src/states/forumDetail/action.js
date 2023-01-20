@@ -86,12 +86,14 @@ function neutralizeVoteComment(vote) {
 
 function asyncReceiveForumDetail(threadId) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const threadDetail = await api.getThreadDetail(threadId);
       dispatch(receiveForumDetailActionCreator(threadDetail));
     } catch (error) {
       alert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 

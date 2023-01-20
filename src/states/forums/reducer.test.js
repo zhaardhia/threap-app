@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /**
- * test scenario for talksReducer
+ * test scenario for forumsReducer
  *
  * - forumsReducer function
  *  - should return the initial state when given by unknown action

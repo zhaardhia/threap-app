@@ -11,8 +11,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: linear-gradient(25deg, #F2AA7E, #FFFBFE) ;
   background-repeat: no-repeat; 
+  /* background: linear-gradient(25deg, #F2AA7E, #FFFBFE) ; */
+  background: linear-gradient(25deg, #6096B4, #93BFCF) ;
+  /* background-color: #EEE3CB; */
 }
 
 /* code {

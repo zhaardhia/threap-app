@@ -21,7 +21,7 @@ const ThreadList = ({ threads }) => {
 
   return (
     <div className="my-36 lg:w-[50rem] w-[90%] mx-auto">
-      <p className="text-3xl text-center">Lists of Threads</p>
+      <p className="text-3xl text-center text-white">Lists of Threads</p>
       <CategoryHomeSection />
       {
         threads.map((thread) => {

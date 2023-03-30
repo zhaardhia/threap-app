@@ -21,7 +21,7 @@ const Leaderboard = () => {
   return (
     <Layout>
       <div className="my-36 md:w-[50rem] w-[90%] mx-auto">
-        <h4 className="text-center text-2xl">Leaderboards of Threap App</h4>
+        <h4 className="text-center text-2xl text-white">Leaderboards of Threap App</h4>
         <Tabs boardsDesc={boardsDesc} boardsAsc={boardsAsc} />
       </div>
     </Layout>

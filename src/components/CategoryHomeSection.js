@@ -22,7 +22,7 @@ const CategoryHomeSection = () => {
       {
         categoryFiltered.map((value) => (
           <button
-            className={`border border-stone-700 border-dotted px-1 py-2 my-3 rounded-xl ${filterCategoryVal === value.category ? 'bg-slate-100' : ''}`}
+            className={`text-white border border-stone-700 border-dotted px-1 py-2 my-3 rounded-xl ${filterCategoryVal === value.category ? 'bg-slate-500' : ''}`}
             key={value.id}
             onClick={(() => filterCategory(value.category))}>
             #

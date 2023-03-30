@@ -27,7 +27,7 @@ const AddComment = ({ comment }) => {
         <img src={authUser.avatar} className="rounded-full" alt="user avatar" />
       </div> */}
       <p className="text-lg">Fill your thoughts up here:</p>
-      <textarea name="" id="" cols="10" rows="10" placeholder="What's on your mind?" className="bg-[#fad4b6] rounded-2xl h-[5rem] w-[90%] p-3 shadow-lg" value={text} onChange={handleTextChange}></textarea>
+      <textarea name="" id="" cols="10" rows="10" placeholder="What's on your mind?" className="bg-[#EEE9DA] rounded-2xl h-[5rem] w-[90%] p-3 shadow-lg" value={text} onChange={handleTextChange}></textarea>
       <ButtonAdd
         ctaLabel="Add Comment"
         type="addComment"

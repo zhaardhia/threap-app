@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import moment from 'moment';
 import { postedAt, textTruncate } from '../data/index';
 
 const Thread = ({
@@ -22,15 +23,23 @@ const Thread = ({
         <p>{`#${category}`}</p>
       </div>
       <div className="flex gap-1 text-xs">
-        <p>{postedAt(createdAt)}</p>
+        <p>
+          {moment(createdAt).format('lll')}
+          {' '}
+          <strong>
+            (
+            {postedAt(createdAt)}
+            )
+          </strong>
+        </p>
         <p>|</p>
-        <Icon width={20} icon="material-symbols:add-comment-outline" />
+        <Icon width={25} icon="material-symbols:add-comment-outline" />
         <p>{totalComments}</p>
         <p>|</p>
         <p className="">
           <strong>{user.name}</strong>
         </p>
-        <p>|</p>
+        {/* <p>|</p>
         {
           isUpVote
             ? (
@@ -80,7 +89,67 @@ const Thread = ({
                 <p>{downVotesBy.length}</p>
               </div>
             )
-        }
+        } */}
+      </div>
+      <div className="flex gap-2">
+        <button
+          className="px-4 py-2 bg-slate-200 rounded-lg"
+          onClick={() => (isUpVote ? upVote(id, true) : upVote(id, false))}
+            >
+          {
+            isUpVote
+              ? (
+                <div className="flex">
+                  <Icon
+                    width={20}
+                    className="cursor-pointer"
+                    icon="mdi:like"
+                  />
+                  <p>{upVotesBy.length}</p>
+                </div>
+              )
+              : (
+                <div className="flex">
+                  <Icon
+                    width={20}
+                    className="w-5 cursor-pointer"
+                    icon="mdi:like-outline"
+                    // onClick={() => (onUpVote(id, false))}
+                  />
+                  <p>{upVotesBy.length}</p>
+                </div>
+              )
+            }
+        </button>
+        <button
+          className="px-4 py-2 bg-slate-200 rounded-lg"
+          onClick={() => (isDownVote ? downVote(id, true) : downVote(id, false))}
+            >
+          {
+            isDownVote
+              ? (
+                <div className="flex">
+                  <Icon
+                    width={20}
+                    className="cursor-pointer"
+                    icon="mdi:dislike"
+                  />
+                  <p>{downVotesBy.length}</p>
+                </div>
+              )
+              : (
+                <div className="flex">
+                  <Icon
+                    width={20}
+                    className="w-5 cursor-pointer"
+                    icon="mdi:dislike-outline"
+                    // onClick={() => (onDownVote(id, false))}
+                  />
+                  <p>{downVotesBy.length}</p>
+                </div>
+              )
+          }
+        </button>
       </div>
     </div>
   </div>

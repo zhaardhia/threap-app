@@ -109,7 +109,6 @@ const ThreadDetail = ({
               )
           }
             </button>
-
           </div>
         </div>
       </div>

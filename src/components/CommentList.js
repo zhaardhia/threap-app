@@ -19,16 +19,21 @@ const CommentList = ({ id, comments, authUser }) => {
     if (isToNeutral) dispatch(asyncNeutralizeVoteComment({ threadId, commentId }));
     else dispatch(asyncDownVoteComment({ threadId, commentId }));
   };
-
+  console.log(comments.length);
   return (
-    <div className="mb-36 flex flex-col gap-2">
+    <div className="mb-10 flex flex-col gap-5 overflow-auto">
       {
-        comments.map((comment) => {
+        comments.map((comment, idx) => {
           const upVote = comment.upVotesBy.find((vote) => authUser === vote);
           const downVote = comment.downVotesBy.find((vote) => authUser === vote);
-
+          console.log(idx);
           return (
-            <Comment key={comment.id} {...comment} threadId={id} isUpVote={upVote} isDownVote={downVote} upVote={onUpVote} downVote={onDownVote} />
+            <>
+              <Comment key={comment.id} {...comment} threadId={id} isUpVote={upVote} isDownVote={downVote} upVote={onUpVote} downVote={onDownVote} />
+              {idx !== comments.length - 1 && (
+                <hr className="my-4 border-dotted" />
+              )}
+            </>
           );
         })
       }

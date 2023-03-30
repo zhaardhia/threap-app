@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Thread from './Thread';
 import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralizeVoteThread } from '../states/forums/action';
+import CategoryHomeSection from './CategoryHomeSection';
 
 const ThreadList = ({ threads }) => {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ const ThreadList = ({ threads }) => {
   };
 
   return (
-    <div className="my-36">
+    <div className="my-36 lg:w-[50rem] w-[90%] mx-auto">
+      <p className="text-3xl text-center">Lists of Threads</p>
+      <CategoryHomeSection />
       {
         threads.map((thread) => {
           const upVote = thread.upVotesBy.find((vote) => thread.authUser === vote);

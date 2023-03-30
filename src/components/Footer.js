@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const Footer = ({ year, link, developer }) => (
   <footer>
-    <p className="text-center my-10">
+    <p className="text-center mt-10 mb-24">
       {year}
       {' '}
       -
       {' '}
-      <a href={link} className="underline">{developer}</a>
+      <a href={link} className="underline" target="_blank" rel="noreferrer">{developer}</a>
     </p>
   </footer>
 );

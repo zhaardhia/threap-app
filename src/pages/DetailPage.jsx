@@ -28,16 +28,24 @@ const DetailPage = () => {
   if (!forumDetail) {
     return null;
   }
+  console.log(forumDetail);
   return (
     <Layout>
       <ThreadDetail {...forumDetail} authUser={authUser.id} />
-      <div className="my-10 xl:w-[60rem] md:w-[80%] mx-auto p-5 flex justify-between text-[#565254] mt-10">
-        <h1 className="text-xl">Comments: </h1>
+      <div className="my-10 md:w-[40rem] w-[80%] mx-auto flex flex-col text-white bg-[#3E4E50B3] mt-10 rounded-2xl sm:p-8 p-5 gap-8 h-[40rem] shadow-xl">
+        <h1 className="text-xl">
+          Comments
+          (
+          {forumDetail.comments.length}
+          )
+        </h1>
+        <CommentList {...forumDetail} authUser={authUser.id} />
       </div>
-      <CommentList {...forumDetail} authUser={authUser.id} />
       <AddComment comment={onComment} />
     </Layout>
   );
 };
 
 export default DetailPage;
+
+// action created date WEB-862

@@ -4,9 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ButtonAdd = ({
-  ctaLabel, onClick, type,
+  ctaLabel, onClick, type, style,
 }) => (
-  <button className={`px-5 py-2 rounded-lg ${type === 'addThread' ? 'bg-[#f5e0a0]' : type === 'addComment' ? 'bg-[#d6ece7]' : ''} shadow-md`} onClick={onClick}>{ctaLabel}</button>
+  <button className={`px-5 py-2 rounded-lg ${type === 'addThread' ? 'bg-[#f5e0a0]' : type === 'addComment' ? 'bg-[#d6ece7]' : ''} shadow-md ${style}`} onClick={onClick}>{ctaLabel}</button>
 );
 
 ButtonAdd.propTypes = {

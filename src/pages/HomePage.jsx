@@ -8,6 +8,8 @@ import { asyncPopulateUsersAndForums } from '../states/shared/action';
 import { asyncAddForum } from '../states/forums/action';
 import Layout from '../components/Layout';
 import BtnAddThread from '../components/BtnAddThread';
+import BottomBar from '../components/BottomBar';
+import CategoryHomeSection from '../components/CategoryHomeSection';
 
 const ModalAddThread = loadable(() => import('../components/ModalAddThread'));
 const ThreadList = loadable(() => import('../components/ThreadList'));
@@ -47,6 +49,7 @@ const HomePage = () => {
       <ModalAddThread open={modalThread} toggleModal={toggleModal} addThread={onAddThread} {...authUser} />
       <BtnAddThread toggleModal={toggleModal} />
       <ThreadList threads={filterCategory ? forumFiltered : forumList} />
+      {/* <BottomBar toggleModal={toggleModal} /> */}
     </Layout>
   );
 };

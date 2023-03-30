@@ -14,11 +14,11 @@ module.exports = {
       colors: {
         primary: '#7D7987',
       },
-      fontFamily: {
-        navbar: ['Poppins', 'sans-serif'],
-        body: ['Mulish', 'sans-serif'],
-        portofolio: ['Montserrat', 'sans-serif'],
-      },
+      // fontFamily: {
+      //   navbar: ['Poppins', 'sans-serif'],
+      //   body: ['Montserrat', 'sans-serif'],
+      //   portofolio: ['Montserrat', 'sans-serif'],
+      // },
     },
   },
   plugins: [],

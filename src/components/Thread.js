@@ -18,7 +18,7 @@ const Thread = ({
     </div>
     <div className="flex flex-col gap-3 w-[88%]">
       <Link to={`/threads/${id}`} className="text-xl font-bold underline">{title}</Link>
-      <p className="text-sm">{textTruncate(body, 100, '...')}</p>
+      <p className="text-sm">{textTruncate(body, 200, '...')}</p>
       <div className="flex gap-2">
         <p>{`#${category}`}</p>
       </div>
@@ -32,13 +32,11 @@ const Thread = ({
             )
           </strong>
         </p>
-        <p>|</p>
-        <Icon width={25} icon="material-symbols:add-comment-outline" />
-        <p>{totalComments}</p>
-        <p>|</p>
-        <p className="">
+        {/* <Icon width={25} icon="material-symbols:add-comment-outline" />
+        <p>{totalComments}</p> */}
+        {/* <p className="">
           <strong>{user.name}</strong>
-        </p>
+        </p> */}
         {/* <p>|</p>
         {
           isUpVote
@@ -91,6 +89,15 @@ const Thread = ({
             )
         } */}
       </div>
+      <div className="flex gap-1">
+        <Icon width={25} icon="material-symbols:add-comment-outline" />
+        <p>{totalComments}</p>
+      </div>
+      <p className="">
+        by
+        {' '}
+        <strong>{user.name}</strong>
+      </p>
       <div className="flex gap-2">
         <button
           className="px-4 py-2 bg-slate-200 rounded-lg"

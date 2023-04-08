@@ -8,6 +8,7 @@ import usersReducer from './users/reducer';
 import modalThreadReducer from './modalThread/reducer';
 import filterCategoryReducer from './filterCategory/reducer';
 import getLeaderboardsReducer from './leaderboards/reducer';
+import darkModeReducer from './darkMode/reducer';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     forumDetail: forumDetailReducer,
     loadingBar: loadingBarReducer,
     modal: modalThreadReducer,
+    darkMode: darkModeReducer,
     filterCategory: filterCategoryReducer,
     leaderboards: getLeaderboardsReducer,
   },
